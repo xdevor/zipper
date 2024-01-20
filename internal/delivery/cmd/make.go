@@ -18,23 +18,22 @@ func init() {
 var goOperationTemplate = template.Must(template.New("zipper.go-onetimeops").Parse(`package onetimeops
 
 import (
-	"context"
-	"database/sql"
-	"github.com/pressly/goose/v3"
+	"fmt"
+
+	"github.com/xdevor/zipper/pkg/zipper"
 )
 
 func init() {
-	goose.AddMigrationContext(up{{.CamelName}}, down{{.CamelName}})
+	zipper.AddOperations(zipper.ZipOps{
+		Name: "{{.Name}}",
+		Operate: func() {
+			run{{.Version}}{{.Name}}()
+		},
+	})
 }
 
-func up{{.CamelName}}(ctx context.Context, tx *sql.Tx) error {
-	// This code is executed when the migration is applied.
-	return nil
-}
-
-func down{{.CamelName}}(ctx context.Context, tx *sql.Tx) error {
-	// This code is executed when the migration is rolled back.
-	return nil
+func run{{.Version}}{{.Name}}() {
+	fmt.Println("Hello")
 }
 `))
 
