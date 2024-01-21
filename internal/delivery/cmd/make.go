@@ -25,10 +25,8 @@ import (
 
 func init() {
 	zipper.AddOperations(zipper.ZipOps{
-		Name: "{{.Name}}",
-		Operate: func() {
-			run{{.Version}}{{.Name}}()
-		},
+		Name: "{{.Version}}_{{.Name}}",
+		Operate: run{{.Version}}{{.Name}},
 	})
 }
 

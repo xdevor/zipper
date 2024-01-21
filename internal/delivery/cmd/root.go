@@ -5,8 +5,6 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
-	_ "github.com/xdevor/zipper/onetimeops"
-	"github.com/xdevor/zipper/pkg/zipper"
 )
 
 var rootCmd = &cobra.Command{
@@ -14,7 +12,7 @@ var rootCmd = &cobra.Command{
 	Short: "Zipper is a one time operation tool allow you run task after deployment, just like migrations",
 	Long:  `Zipper is a one time operation tool allow you run task after deployment, just like migrations in Go. Complete documentation is available at https://github.com/xdevor/zipper`,
 	Run: func(cmd *cobra.Command, args []string) {
-		zipper.Execute()
+		// Do Stuff Here
 	},
 }
 
